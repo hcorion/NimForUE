@@ -15,3 +15,7 @@ import nimforue/examples/examples
 
 
 #echo $module
+
+{.emit: """
+#pragma warning(disable: 4101) 
+""".}

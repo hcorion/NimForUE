@@ -8,7 +8,7 @@ import ../../codegen/codegentemplate
 
 # import ../unreal/bindings/[nimforuebindings, testimport]
 # import ../unreal/bindings/[nimforuebindings]
-import ../unreal/bindings/[nimforuebindings]
+#import ../unreal/bindings/[nimforuebindings]
 
 # {.experimental: "codeReordering".}
 
@@ -80,7 +80,7 @@ uClass AActorScratchpad of AActor:
     intProp : int32#
     objTest : TObjectPtr[AActor]
     objTest2 : TObjectPtr[AActor]
-    testStr : FStructToUseAsVar
+    #testStr : FStructToUseAsVar
     # objTestInArray : TArray[TObjectPtr[AActor] g.packed[module].module
     # beatiful: EComponentMobility
 
@@ -90,21 +90,25 @@ uClass AActorScratchpad of AActor:
   
   ufuncs(CallInEditor):
     proc testHelloWorld() =
-      let obj = newUObject[UMyClassToTest]()
-      UE_Warn "testHelloWorld: " & obj.getHelloWorld()
+      return
+      # let obj = newUObject[UMyClassToTest]()
+      # UE_Warn "testHelloWorld: " & obj.getHelloWorld()
 
 
     proc testUProp() =
-      let obj = newUObject[UMyClassToTest]()
-      obj.nameProperty = "NameProperty".n()
-      obj.enumProperty=EMyTestEnum.TestValue2
-      UE_Log obj.nameProperty.toFString()
-      UE_Log $obj.enumProperty
+      return
+      # let obj = newUObject[UMyClassToTest]()
+      # obj.nameProperty = "NameProperty".n()
+      # obj.enumProperty=EMyTestEnum.TestValue2
+      # UE_Log obj.nameProperty.toFString()
+      # UE_Log $obj.enumProperty
 
     proc testFStruct() = 
-      let str = FStructToUseAsVar(testProperty:"Test To Use it as Prop") 
-      self.testStr = str
-      UE_Log $self.testStr
+      return
+      #let str = FStructToUseAsVar(testProperty:"Test To Use it as Prop") 
+      #self.testStr = str
+      #UE_Log $self.testStr
 
     proc testStaticFunction() =
-      UE_Warn getHelloWorldStatic() 
+      return
+      #UE_Warn getHelloWorldStatic(
