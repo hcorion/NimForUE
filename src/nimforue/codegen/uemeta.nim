@@ -547,7 +547,7 @@ proc toUEModule*(pkg: UPackagePtr, rules: seq[UEImportRule], excludeDeps: seq[st
   
     
   var types = initialTypes & getForcedTypes(name, rules)
-  let excludeFromModuleNames = @["CoreUObject", name]
+  let excludeFromModuleNames = @["CoreUObject", "ExpressiveText", "ExpressiveTextEditor", name]
   let deps = (types
     .mapIt(it.getModuleNames(pkg, excludeFromModuleNames))
     .foldl(a & b, newSeq[string]()) & includeDeps)

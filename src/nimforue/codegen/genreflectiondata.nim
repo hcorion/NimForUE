@@ -44,7 +44,7 @@ proc genReflectionData*(gameModules, plugins: seq[string]): UEProject =
 
   proc getUEModuleFromModule(module: string): Option[UEModule] =
     #TODO adds exclude deps as a rule per module
-    var excludeDeps = @["CoreUObject"]
+    var excludeDeps = @["CoreUObject", "ExpressiveText", "ExpressiveTextEditor"]
     if module == "Engine": #TODO this exclude deps should be a rule
       excludeDeps.add "UMG"
       excludeDeps.add "Chaos"

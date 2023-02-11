@@ -108,12 +108,12 @@ func getRuleAffectingType*(rules:seq[UEImportRule], name:string, rule:UERule): O
 
 #Any module not picked by default.
 #This could be exposed to the json file 
-let extraModuleNames* = @["EnhancedInput", "Blutility", "AudioMixer", "Chaos", "AssetRegistry", "NavigationSystem", "Niagara", "ControlRig"]
+let extraModuleNames* = @["EnhancedInput", "Blutility", "AudioMixer", "Chaos", "AssetRegistry", "NavigationSystem", "Niagara", "ControlRig", "ExpressiveText"]
 #By default modules import only bp symbols because it's the safest option
 #The module listed below will be an exception (alongside the ones in moduleRules that doesnt say it explicitaly)
 #TODO add a hook to the user
 let extraNonBpModules* = @["DeveloperSettings", "EnhancedInput", "Blutility", "AssetRegistry", "CommonUI", "CommonInput", 
-"NavigationSystem", "DungeonArchitectRuntime", "NiagaraCore"]
+"NavigationSystem", "DungeonArchitectRuntime", "NiagaraCore", "ExpressiveText"]
 #CodegenOnly directly affects the Engine module but needs to be passed around
 #for all modules because the one classes listed here are importc one so we dont mangle them 
 
@@ -375,3 +375,11 @@ moduleImportRules["EditorSubsystem"] = @[
   makeImportedRuleModule(uerImportBlueprintOnly)
 ]
 
+moduleImportRules["ExpressiveText"] = @[
+  makeImportedRuleType(uerIgnore, @[
+    "UExpressiveTextWidgetComponent"
+  ]),
+  makeImportedRuleField(uerIgnore, @[
+    "GetWidgetComponent"
+  ]),
+]
